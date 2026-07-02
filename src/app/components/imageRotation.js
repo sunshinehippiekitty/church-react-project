@@ -6,8 +6,9 @@ import Image from "next/image";
 const mediaItems = [
   { src: "/stTheresaStatue.png", alt: "St Theresa Statue", type: "image" },
   { 
+    // This is the direct link that users will navigate to when clicked
     src: "https://www.instagram.com/reel/DZztsqIhD_U/?utm_source=ig_embed&amp;utm_campaign=loading", 
-    alt: "Church Instagram Video", 
+    alt: "Church of St Teresa Singapore Reel", 
     type: "instagram" 
   },
   { src: "/stTheresaPic.png", alt: "St Theresa Picture", type: "image" },
@@ -29,7 +30,7 @@ export default function ImageCarousel() {
       </div>
 
       <div className="w-full max-w-3xl mx-auto px-5 py-5">
-
+        {/* Arrow, media window, arrow */}
         <div className="flex items-center gap-4">
           <button
             onClick={prev}
@@ -40,15 +41,24 @@ export default function ImageCarousel() {
           </button>
 
           <div className="relative flex-1 aspect-video rounded-lg overflow-hidden shadow-md bg-white">
-
+            {/* Conditional Rendering for Instagram vs standard Images */}
             {currentMedia.type === "instagram" ? (
-              <iframe
-                src={currentMedia.src}
-                title={currentMedia.alt}
-                className="w-full h-full border-none"
-                allowFullScreen
-                scrolling="no"
-              />
+              /* 1. Wrapped the entire frame inside an anchor tag to direct users to Instagram */
+              <a 
+                href={currentMedia.src} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block w-full h-full relative cursor-pointer group"
+              >
+                {/* Visual Placeholder: Since iframes block clicks, we display a beautiful card that links out */}
+                <div className="absolute inset-0 bg-gray-900 flex flex-col items-center justify-center text-white p-4 text-center z-10 group-hover:bg-gray-800 transition-colors">
+                  <span className="text-4xl mb-2">🎬</span>
+                  <p className="font-semibold text-lg">{currentMedia.alt}</p>
+                  <span className="text-sm text-blue-400 mt-2 underline group-hover:text-blue-300">
+                    Watch Video on Instagram →
+                  </span>
+                </div>
+              </a>
             ) : (
               <Image
                 src={currentMedia.src}
@@ -69,6 +79,7 @@ export default function ImageCarousel() {
           </button>
         </div>
 
+        {/* Dots */}
         <div className="flex justify-center gap-3 mt-5">
           {mediaItems.map((_, i) => (
             <button
@@ -82,6 +93,7 @@ export default function ImageCarousel() {
           ))}
         </div>
 
+        {/* Lightbox / Expanded View (Skips Instagram items) */}
         {expanded && currentMedia.type === "image" && (
           <div
             className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
