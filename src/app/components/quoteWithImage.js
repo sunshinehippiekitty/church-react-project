@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function QuoteWithImage() {
   return (
     <div>
-      <div className="px-5">
+      <div className="px-5 mt-8">
         <div className="bg-white/70 backdrop-blur-md rounded-lg px-6 py-4 shadow-md">
           <h1 className="text-3xl text-center rounded-lg">
             Welcome to the Church of St Theresa!

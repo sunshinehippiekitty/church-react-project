@@ -5,11 +5,11 @@ import Image from "next/image";
 
 const mediaItems = [
   { src: "/stTheresaStatue.png", alt: "St Theresa Statue", type: "image" },
-  { 
+  {
     // This is the direct link that users will navigate to when clicked
-    src: "https://www.instagram.com/reel/DZztsqIhD_U/?utm_source=ig_embed&amp;utm_campaign=loading", 
-    alt: "Church of St Teresa Singapore Reel", 
-    type: "instagram" 
+    src: "https://www.instagram.com/reel/DZztsqIhD_U/?utm_source=ig_embed&amp;utm_campaign=loading",
+    alt: "Church of St Teresa Singapore Reel",
+    type: "instagram",
   },
   { src: "/stTheresaPic.png", alt: "St Theresa Picture", type: "image" },
 ];
@@ -18,8 +18,10 @@ export default function ImageCarousel() {
   const [current, setCurrent] = useState(0);
   const [expanded, setExpanded] = useState(false);
 
-  const prev = () => setCurrent((i) => (i === 0 ? mediaItems.length - 1 : i - 1));
-  const next = () => setCurrent((i) => (i === mediaItems.length - 1 ? 0 : i + 1));
+  const prev = () =>
+    setCurrent((i) => (i === 0 ? mediaItems.length - 1 : i - 1));
+  const next = () =>
+    setCurrent((i) => (i === mediaItems.length - 1 ? 0 : i + 1));
 
   const currentMedia = mediaItems[current];
 
@@ -30,7 +32,6 @@ export default function ImageCarousel() {
       </div>
 
       <div className="w-full max-w-3xl mx-auto px-5 py-5">
-        {/* Arrow, media window, arrow */}
         <div className="flex items-center gap-4">
           <button
             onClick={prev}
@@ -44,9 +45,9 @@ export default function ImageCarousel() {
             {/* Conditional Rendering for Instagram vs standard Images */}
             {currentMedia.type === "instagram" ? (
               /* 1. Wrapped the entire frame inside an anchor tag to direct users to Instagram */
-              <a 
-                href={currentMedia.src} 
-                target="_blank" 
+              <a
+                href={currentMedia.src}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full h-full relative cursor-pointer group"
               >

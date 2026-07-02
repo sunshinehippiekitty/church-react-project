@@ -7,9 +7,9 @@ export default function InfoWithImage() {
         <h1 className="text-3xl text-center rounded-lg">Contact Information</h1>
       </div>
 
-      <div className="flex flex-col md:flex-row items-center justify-center w-full mx-4 md:mx-8 my-1 mt-10 gap-6">
+      <div className="flex flex-col md:flex-row items-center justify-center w-full md:mx-8 my-1 mt-10 gap-6">
         <div className="flex-[2] flex items-center justify-center p-1">
-          <blockquote className="text-xl text-black-700 text-center md:text-left leading-relaxed bg-white rounded-lg p-5 w-full">
+          <blockquote className="text-xl text-black-700 text-center md:text-left leading-relaxed bg-white rounded-lg p-5 w-full mx-5">
             <p className="font-bold">Parish Office Hours</p>
             MON to SUN: 9:00 AM to 5:00 PM Closed on Public Holidays <br />
             Website: <a>www.stteresa.sg</a> <br />
